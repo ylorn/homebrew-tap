@@ -13,10 +13,7 @@ class Kanata < Formula
   end
 
   def post_install
-    source = Pathname("#{Dir.home}/.config/kanata/kanata.kbd")
-    destination = etc/"kanata/kanata.kbd"
-    destination.dirname.mkpath
-    cp source, destination if source.exist? && !destination.exist?
+    (etc/"kanata").mkpath
   end
 
   service do
@@ -38,8 +35,9 @@ class Kanata < Formula
       the supported driver cask rather than the unversioned latest-driver cask:
         brew install --cask ylorn/tap/karabiner-driverkit-virtualhiddevice@6.2.0
 
-      The root service reads #{etc}/kanata/kanata.kbd. On first install, the
-      formula copies ~/.config/kanata/kanata.kbd there when it exists.
+      The root service reads #{etc}/kanata/kanata.kbd. Copy your config there
+      before starting or restarting the service:
+        cp ~/.config/kanata/kanata.kbd #{etc}/kanata/kanata.kbd
     EOS
   end
 
