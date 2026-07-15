@@ -4,7 +4,7 @@ cask "karabiner-driverkit-virtualhiddevice" do
 
   url "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice/releases/download/v#{version}/Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg"
   name "Karabiner-DriverKit-VirtualHIDDevice"
-  desc "DriverKit-based virtual keyboard and mouse for macOS"
+  desc "DriverKit-based virtual keyboard and mouse"
   homepage "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice"
 
   conflicts_with cask: "karabiner-driverkit-virtualhiddevice@6.2.0"
@@ -12,12 +12,12 @@ cask "karabiner-driverkit-virtualhiddevice" do
 
   pkg "Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg"
 
+  # Keep the system extension active during upgrades, matching Karabiner Elements.
   uninstall early_script: {
               executable: "/Library/Application Support/org.pqrs/Karabiner-DriverKit-VirtualHIDDevice/scripts/uninstall/remove_files.sh",
               sudo:       true,
             },
             pkgutil:      "org.pqrs.Karabiner-DriverKit-VirtualHIDDevice"
-  # Keep the system extension active during upgrades, matching Karabiner Elements.
 
   caveats <<~EOS
     Activate the system extension after installation:
