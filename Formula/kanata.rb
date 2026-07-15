@@ -12,11 +12,18 @@ class Kanata < Formula
     system "cargo", "install", *std_cargo_args, "--features", "cmd"
   end
 
+  def post_install
+    source = Pathname("#{Dir.home}/.config/kanata/kanata.kbd")
+    destination = etc/"kanata/kanata.kbd"
+    destination.dirname.mkpath
+    cp source, destination if source.exist? && !destination.exist?
+  end
+
   service do
-    run [opt_bin/"kanata", "--no-wait", "--cfg", "#{Dir.home}/.config/kanata/kanata.kbd"]
+    run [opt_bin/"kanata", "--no-wait", "--cfg", etc/"kanata/kanata.kbd"]
     keep_alive true
     require_root true
-    working_dir Dir.home
+    working_dir etc/"kanata"
     environment_variables PATH: std_service_path_env
     log_path var/"log/kanata.log"
     error_log_path var/"log/kanata.log"
@@ -30,6 +37,9 @@ class Kanata < Formula
       Kanata #{version} embeds VirtualHIDDevice client protocol 5. On macOS, use
       the supported driver cask rather than the unversioned latest-driver cask:
         brew install --cask ylorn/tap/karabiner-driverkit-virtualhiddevice@6.2.0
+
+      The root service reads #{etc}/kanata/kanata.kbd. On first install, the
+      formula copies ~/.config/kanata/kanata.kbd there when it exists.
     EOS
   end
 
