@@ -13,7 +13,7 @@ cask "karabiner-driverkit-virtualhiddevice@6.2.0" do
   end
 
   conflicts_with cask: "karabiner-driverkit-virtualhiddevice"
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   pkg "Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg"
 
