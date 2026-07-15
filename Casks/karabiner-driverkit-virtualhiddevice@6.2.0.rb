@@ -2,8 +2,7 @@ cask "karabiner-driverkit-virtualhiddevice@6.2.0" do
   version "6.2.0"
   sha256 "9e8c46239f0748161241e42444857901224e5c82f5b58a1731df4c70bf0736a8"
 
-  url "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice/releases/download/v#{version}/Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg",
-      verified: "github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice/"
+  url "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice/releases/download/v#{version}/Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg"
   name "Karabiner-DriverKit-VirtualHIDDevice"
   desc "DriverKit-based virtual keyboard and mouse for macOS"
   homepage "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice"
