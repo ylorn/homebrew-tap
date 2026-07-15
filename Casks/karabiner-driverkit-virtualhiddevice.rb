@@ -9,7 +9,7 @@ cask "karabiner-driverkit-virtualhiddevice" do
   homepage "https://github.com/pqrs-org/Karabiner-DriverKit-VirtualHIDDevice"
 
   conflicts_with cask: "karabiner-driverkit-virtualhiddevice@6.2.0"
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   pkg "Karabiner-DriverKit-VirtualHIDDevice-#{version}.pkg"
 
