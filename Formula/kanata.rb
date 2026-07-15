@@ -12,10 +12,6 @@ class Kanata < Formula
     system "cargo", "install", *std_cargo_args, "--features", "cmd"
   end
 
-  def post_install
-    (etc/"kanata").mkpath
-  end
-
   service do
     run [opt_bin/"kanata", "--no-wait", "--cfg", etc/"kanata/kanata.kbd"]
     keep_alive true
