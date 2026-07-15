@@ -38,6 +38,11 @@ class Kanata < Formula
       The root service reads #{etc}/kanata/kanata.kbd. Copy your config there
       before starting or restarting the service:
         cp ~/.config/kanata/kanata.kbd #{etc}/kanata/kanata.kbd
+
+      macOS binds Input Monitoring and Accessibility to the resolved Cellar
+      executable. After upgrading Kanata, remove and re-add this path in both
+      Privacy & Security panes:
+        #{bin}/kanata
     EOS
   end
 
